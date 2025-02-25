@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
             }
         });
+        if (!response.ok) throw new Error(`Błąd HTTP: ${response.status}`);
         const data = await response.json();
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.json(data);
